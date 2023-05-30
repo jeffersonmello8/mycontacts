@@ -15,6 +15,13 @@ let contacts = [
     phone: '85988774455',
     category_id: v4(),
   },
+  {
+    id: v4(),
+    name: 'Gilberto Gil',
+    email: 'gil.gil@yahoo.com.br',
+    phone: '85988774433',
+    category_id: v4(),
+  },
 ];
 
 class ContactsRepository {
@@ -56,6 +63,26 @@ class ContactsRepository {
       };
       contacts.push(newContact);
       resolve(newContact);
+    });
+  }
+
+  update(id, {
+    name, email, phone, category_id,
+  }) {
+    return new Promise((resolve) => {
+      const updatedContact = {
+        id,
+        name,
+        email,
+        phone,
+        category_id,
+      };
+
+      contacts = contacts.map((contact) => (
+        contact.id === id ? updatedContact : contact
+      ));
+
+      resolve(updatedContact);
     });
   }
 }
