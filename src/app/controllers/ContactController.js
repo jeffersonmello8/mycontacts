@@ -84,5 +84,4 @@ class ContactController {
   }
 }
 
-// Singleton
 module.exports = new ContactController();
